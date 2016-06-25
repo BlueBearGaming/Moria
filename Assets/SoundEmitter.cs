@@ -46,14 +46,6 @@ public class SoundEmitter: MonoBehaviour
 		this.sphere.transform.localScale = new Vector3 (0, 0, 0);
 	}
 
-	#if UNITY_EDITOR
-	private void OnDrawGizmos()
-	{
-		Gizmos.color = Color.white;
-		Gizmos.DrawWireSphere(this.transform.position, this.intensity);
-	}
-	#endif
-
 	public bool isActive()
 	{
 		return this.active;
@@ -68,4 +60,12 @@ public class SoundEmitter: MonoBehaviour
 
 		return false;
 	}
+		
+	#if UNITY_EDITOR
+	private void OnDrawGizmos()
+	{
+		Gizmos.color = Color.green;
+		Gizmos.DrawWireSphere(this.transform.position, this.intensity);
+	}
+	#endif
 }
