@@ -8,6 +8,7 @@ public class LightDiminuer : MonoBehaviour {
 	public float intensityRate = 0.001F;
 	public float ambientIntensity = 3;
 	public float torchNoiseRange = 1;
+	public bool lightOn = false;
 
 	private GameObject player;
 	private Light playerLight;
@@ -36,7 +37,8 @@ public class LightDiminuer : MonoBehaviour {
 			ambientPlayerLight.intensity += intensityRate;
 		}
 
-		if (Input.GetKey (KeyCode.L)) {
+		if (Input.GetKey (KeyCode.L) && !lightOn) {
+			lightOn = true;
 			playerLight.intensity = intensity;
 		}
 	}
