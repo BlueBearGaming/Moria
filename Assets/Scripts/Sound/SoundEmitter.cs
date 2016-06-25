@@ -54,7 +54,7 @@ public class SoundEmitter: MonoBehaviour
 	public bool isInHearingRangeOf(EnnemyHearing ennemyHearing)
 	{
 		var distance = Vector3.Distance(ennemyHearing.transform.position, this.transform.position);
-		if (distance < this.intensity + ennemyHearing.hearingRadius) {
+		if (distance < (this.intensity + ennemyHearing.hearingRadius)) {
 			return true;
 		}
 

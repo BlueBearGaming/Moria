@@ -16,10 +16,6 @@ public class EnnemyHearing : MonoBehaviour
 	void Start()
 	{
 		this.soundEmitters = FindObjectsOfType(typeof(SoundEmitter)) as SoundEmitter[];
-		Debug.Log("hi start EnnemyHearing");
-		foreach (SoundEmitter soundEmitter in this.soundEmitters) {
-			Debug.Log("Found an emitter");
-		}
 	}
 
 	void Awake()
