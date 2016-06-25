@@ -2084,6 +2084,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hearingRadius: 2
   lastHeard: {x: 0, y: 0, z: 0}
+  heard: 0
 --- !u!114 &11464198
 MonoBehaviour:
   m_ObjectHideFlags: 1
