@@ -5,6 +5,8 @@ public class EnemySightBehavior : MonoBehaviour {
 
 	public float fieldOfViewAngle = 110f;
 	public float visionDistance = 10;
+	public float minimumVisionRange = 10;
+	public float testDistance = 0;
 
 	private Vector3 lastViewedPosition;
 	private GameObject player;
@@ -12,7 +14,6 @@ public class EnemySightBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Awake()
 	{
-		visionDistance = 10;
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 
@@ -36,8 +37,10 @@ public class EnemySightBehavior : MonoBehaviour {
 		float angle = Vector3.Angle(direction, transform.forward);	
 		float distance = Vector3.Distance (playerPosition, skeletonPosition);
 
+		testDistance = distance;
+
 		// if the player is in view angle and in distance vision range
-		if(distance <= visionDistance && angle < fieldOfViewAngle * 0.5f) {
+		if((minimumVisionRange >= distance) || (distance <= visionDistance && angle < fieldOfViewAngle * 0.5f)) {
 			isVisible = true;
 		}
 

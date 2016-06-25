@@ -5,34 +5,34 @@ public class Attacker : MonoBehaviour {
 
 	public float attackDistance = 1;
 	public bool attacking;
-	public float attackDuration = 1;
+	public float attackDuration = 5;
 
 	private GameObject player;
 	private EnemySightBehavior enemySight;
-	private float attackStartedDate;
+	public float attackStartedTime;
 
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		enemySight = GetComponent<EnemySightBehavior> ();
+		attackDuration = 5;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
 		if (enemySight.IsPlayerVisible () && isPlayerAttackable ()) {
-			attacking = true;
-			attackStartedDate = Time.time;
 
-			// TODO launch attack animation
+			if (attacking == false) {
+				attackStartedTime = Time.time;
+			}
+			attacking = true;
 		} else {
 			attacking = false;
 		}
 
-		if ((Time.time - attackStartedDate) > attackDuration) {
+		if (attacking && (Time.time - attackStartedTime) > attackDuration) {
 			attacking = false;
-
-			// TODO stop attack animation
 		}
 	}
 
@@ -40,7 +40,7 @@ public class Attacker : MonoBehaviour {
 	{
 		float distance = Vector3.Distance (transform.position, player.transform.position);
 
-		return attackDistance >= distance && !isAttacking();
+		return attackDistance >= distance;
 	}
 
 	public bool isAttacking()
