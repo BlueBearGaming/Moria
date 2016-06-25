@@ -146,7 +146,7 @@ GameObject:
   - 108: {fileID: 10884142}
   m_Layer: 0
   m_Name: Character Ambient
-  m_TagString: Untagged
+  m_TagString: AmbientPlayerLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -525,7 +525,6 @@ GameObject:
   - 92: {fileID: 9239148}
   - 124: {fileID: 12475320}
   - 81: {fileID: 8125200}
-  - 114: {fileID: 11412768}
   - 114: {fileID: 11494226}
   - 114: {fileID: 11436050}
   m_Layer: 0
@@ -546,7 +545,7 @@ GameObject:
   - 108: {fileID: 10801022}
   m_Layer: 0
   m_Name: Torch light
-  m_TagString: Untagged
+  m_TagString: PlayerLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1190,6 +1189,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 429230}
+  - 114: {fileID: 11422742}
   m_Layer: 0
   m_Name: RootGameplay
   m_TagString: Untagged
@@ -1210,9 +1210,10 @@ GameObject:
   - 136: {fileID: 13643148}
   - 114: {fileID: 11482252}
   - 114: {fileID: 11413752}
+  - 114: {fileID: 11438632}
   m_Layer: 0
   m_Name: ThirdPersonController
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1569,7 +1570,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 154650}
-  m_LocalRotation: {x: 0.53267515, y: 0.07034045, z: 0.83613265, w: -0.11041513}
+  m_LocalRotation: {x: 0.5326752, y: 0.070340455, z: 0.83613276, w: -0.110415146}
   m_LocalPosition: {x: 0.000022271464, y: -0.00006150465, z: 0.026027026}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2349,10 +2350,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 134952}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071067}
   m_LocalPosition: {x: -4.330019, y: -1.1806917, z: -0.4383552}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
   m_Children:
   - {fileID: 404490}
   m_Father: {fileID: 429230}
@@ -2772,17 +2773,6 @@ Light:
   m_ShadowRadius: 0
   m_ShadowAngle: 0
   m_AreaSize: {x: 1, y: 1}
---- !u!114 &11412768
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 147806}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11413752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2818,6 +2808,20 @@ MonoBehaviour:
   m_UpdateType: 0
   m_MoveSpeed: 1.5
   m_LockCursor: 0
+--- !u!114 &11422742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 185760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fab7d85f12bb54f56bfcec1dea589738, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  intensityRate: 0.001
+  ambientIntensity: 3
+  torchNoiseRange: 1
 --- !u!114 &11436050
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2844,6 +2848,19 @@ MonoBehaviour:
   noiseTexture: {fileID: 2800000, guid: 7a632f967e8ad42f5bd275898151ab6a, type: 3}
   noiseShader: {fileID: 4800000, guid: b0249d8c935344451aa4de6db76f0688, type: 3}
   dx11NoiseShader: {fileID: 4800000, guid: 8b30686bb4322ab42ad5eb50a0210b58, type: 3}
+--- !u!114 &11438632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 187174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e70adcac5edf46508cfd14f6384c713, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 1000, y: 1000, z: 1000}
+  resetPosition: {x: 1000, y: 1000, z: 1000}
 --- !u!114 &11482252
 MonoBehaviour:
   m_ObjectHideFlags: 1
