@@ -2823,8 +2823,8 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 0.9632353, g: 0.7498778, b: 0.36829588, a: 1}
-  m_Intensity: 2.97
-  m_Range: 15
+  m_Intensity: 3.93
+  m_Range: 20
   m_SpotAngle: 30
   m_CookieSize: 10
   m_Shadows:
@@ -2856,7 +2856,7 @@ Light:
   serializedVersion: 6
   m_Type: 2
   m_Color: {r: 0.01838234, g: 0.3405681, b: 0.5, a: 1}
-  m_Intensity: 3.5
+  m_Intensity: 0
   m_Range: 15
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3022,8 +3022,8 @@ MonoBehaviour:
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
-      value: 0.98125
+    - time: 0.9732639
+      value: 1.0185156
       inSlope: 0.42391342
       outSlope: 0.42391342
       tangentMode: 0

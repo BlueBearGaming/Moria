@@ -19,8 +19,6 @@ public class LightDiminuer : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 
 		playerLight = GameObject.FindGameObjectWithTag ("PlayerLight").GetComponent<Light>();
-		playerLight.intensity = 5;
-		playerLight.range = 15;
 
 		ambientPlayerLight = GameObject.FindGameObjectWithTag ("AmbientPlayerLight").GetComponent<Light>();
 		ambientPlayerLight.intensity = 0;
@@ -31,7 +29,10 @@ public class LightDiminuer : MonoBehaviour {
 		if (playerLight.intensity == 0) {
 			ambientPlayerLight.intensity = ambientIntensity;
 		} else {
-			playerLight.intensity = playerLight.intensity - intensityRate;
+			playerLight.intensity -= intensityRate;
+		}
+		if (playerLight.intensity < 2F && ambientPlayerLight.intensity < ambientIntensity) {
+			ambientPlayerLight.intensity += intensityRate;
 		}
 	}
 }

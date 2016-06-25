@@ -7,17 +7,23 @@ public class GotoTarget : MonoBehaviour {
 	private EnemyHearing enemyHearing;
 	private EnemySightBehavior enemySightBehavior;
 	private GameObject player;
+	private Attacker attacker;
 
 	// Use this for initialization
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 		enemyHearing = GetComponent<EnemyHearing> ();
 		enemySightBehavior = GetComponent<EnemySightBehavior> ();
+		attacker = GetComponent<Attacker> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (attacker.isAttacking()) {
+			return;
+		}
+
 		if (enemySightBehavior.IsPlayerVisible()) {
 			agent.SetDestination (player.transform.position);
 			return;
