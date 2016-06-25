@@ -4,10 +4,9 @@ using System;
 
 public class LightDiminuer : MonoBehaviour {
 
+	public float intensity = 15;
 	public float intensityRate = 0.001F;
-
 	public float ambientIntensity = 3;
-
 	public float torchNoiseRange = 1;
 
 	private GameObject player;
@@ -19,6 +18,8 @@ public class LightDiminuer : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 
 		playerLight = GameObject.FindGameObjectWithTag ("PlayerLight").GetComponent<Light>();
+		playerLight.intensity = 0;
+		playerLight.range = 15;
 
 		ambientPlayerLight = GameObject.FindGameObjectWithTag ("AmbientPlayerLight").GetComponent<Light>();
 		ambientPlayerLight.intensity = 0;
@@ -33,6 +34,10 @@ public class LightDiminuer : MonoBehaviour {
 		}
 		if (playerLight.intensity < 2F && ambientPlayerLight.intensity < ambientIntensity) {
 			ambientPlayerLight.intensity += intensityRate;
+		}
+
+		if (Input.GetKey (KeyCode.L)) {
+			playerLight.intensity = intensity;
 		}
 	}
 }
