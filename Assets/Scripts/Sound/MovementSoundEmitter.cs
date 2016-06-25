@@ -2,10 +2,11 @@
 using System.Collections;
 
 [RequireComponent(typeof(SoundEmitter))] 
-public class MovmentSoundEmitter : MonoBehaviour 
+public class MovementSoundEmitter : MonoBehaviour 
 {
-	public SoundEmitter soundEmitter;
 	public Vector3 previousPosition;
+
+	private SoundEmitter soundEmitter;
 
 	// Use this for initialization
 	void Start() 

@@ -15,7 +15,7 @@ public class EnemySightBehavior : MonoBehaviour {
 		visionDistance = 10;
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 
@@ -26,8 +26,7 @@ public class EnemySightBehavior : MonoBehaviour {
 		}
 	}
 
-
-	bool IsPlayerVisible()
+	public bool IsPlayerVisible()
 	{
 		bool isVisible = false;
 		Vector3 playerPosition = player.transform.position;

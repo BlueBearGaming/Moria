@@ -5,12 +5,14 @@ using System.Collections;
 using UnityEditor;
 #endif
 
-public class EnnemyHearing : MonoBehaviour 
+public class EnemyHearing : MonoBehaviour 
 {
 	// radius of the hearing sphere
 	public float hearingRadius = 10;
 
 	public Vector3 lastHeard;
+	public bool heard;
+
 	SoundEmitter[] soundEmitters;
 
 	void Start()
@@ -28,6 +30,7 @@ public class EnnemyHearing : MonoBehaviour
 		foreach (SoundEmitter soundEmitter in this.soundEmitters) {
 			if (soundEmitter.isActive() && soundEmitter.isInHearingRangeOf(this)) {
 				this.lastHeard = soundEmitter.transform.position;
+				this.heard = true;
 				Debug.Log("I heard you little chicky");
 			}
 		}

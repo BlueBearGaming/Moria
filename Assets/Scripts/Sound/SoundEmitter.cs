@@ -7,12 +7,12 @@ using UnityEditor;
 
 public class SoundEmitter: MonoBehaviour 
 {
-	public AudioSource audioSource;
 	public AudioClip audioClip;
 
 	public bool active = false;
 	public float intensity = 20;
 
+	private AudioSource audioSource;
 	private GameObject sphere;
 
 	// Use this for initialization
@@ -51,7 +51,7 @@ public class SoundEmitter: MonoBehaviour
 		return this.active;
 	}
 
-	public bool isInHearingRangeOf(EnnemyHearing ennemyHearing)
+	public bool isInHearingRangeOf(EnemyHearing ennemyHearing)
 	{
 		var distance = Vector3.Distance(ennemyHearing.transform.position, this.transform.position);
 		if (distance < (this.intensity + ennemyHearing.hearingRadius)) {
