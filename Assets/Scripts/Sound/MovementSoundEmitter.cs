@@ -8,7 +8,7 @@ public class MovementSoundEmitter : MonoBehaviour
 	private SoundEmitter soundEmitter;
 
 	// Use this for initialization
-	void Start() 
+	void Start()
 	{
 		this.previousPosition = this.transform.position;
 		this.soundEmitter = GetComponent<SoundEmitter>();

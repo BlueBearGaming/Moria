@@ -5,13 +5,12 @@ using System.Collections;
 using UnityEditor;
 #endif
 
+[ExecuteInEditMode]
 [RequireComponent(typeof(AudioSource))] 
 public class SoundEmitter: MonoBehaviour 
 {
-	public AudioClip audioClip;
-	public float intensity = 5;
-	public bool oneShot = true;
-
+	protected AudioClip audioClip;
+	protected bool oneShot = false;
 	private float activatedAt;
 	private AudioSource audioSource;
 
@@ -19,7 +18,7 @@ public class SoundEmitter: MonoBehaviour
 	public void Start()
 	{
 		this.audioSource = GetComponent<AudioSource>();
-		this.audioSource.clip = this.audioClip;
+		this.audioClip = this.audioSource.clip;
 	}
 
 	// Update is called once per frame
@@ -54,18 +53,28 @@ public class SoundEmitter: MonoBehaviour
 	public bool isInHearingRangeOf(EnemyHearing ennemyHearing)
 	{
 		var distance = Vector3.Distance(ennemyHearing.transform.position, this.transform.position);
-		if (distance < (this.intensity + ennemyHearing.hearingRadius)) {
+		if (distance < (this.getIntensity() + ennemyHearing.hearingRadius)) {
 			return true;
 		}
 
 		return false;
+	}
+
+	public float getIntensity()
+	{
+		return this.audioSource.volume * 5;
+	}
+
+	public void setOneShot(bool oneShot)
+	{
+		this.oneShot = oneShot;
 	}
 		
 	#if UNITY_EDITOR
 	private void OnDrawGizmos()
 	{
 		Gizmos.color = Color.green;
-		Gizmos.DrawWireSphere(this.transform.position, this.intensity);
+		Gizmos.DrawWireSphere(this.transform.position, this.getIntensity());
 	}
 	#endif
 }
