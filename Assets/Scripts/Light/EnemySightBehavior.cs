@@ -20,7 +20,7 @@ public class EnemySightBehavior : MonoBehaviour {
 
 
 		if (IsPlayerVisible ()) {
-			Debug.Log ("VISIBLE 0==0");
+			Debug.Log ("VISIBLE 0==D");
 		}
 
 		//Debug.Log ("-----------------------------------");
@@ -44,10 +44,6 @@ public class EnemySightBehavior : MonoBehaviour {
 		if(distance <= visionDistance && angle < fieldOfViewAngle * 0.5f) {
 			isVisible = true;
 		}
-
-		//Debug.Log ("rotation");
-		//Debug.Log (test);
-
 
 		return isVisible;
 	}
