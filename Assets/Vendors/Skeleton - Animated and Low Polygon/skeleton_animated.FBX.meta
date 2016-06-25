@@ -2683,7 +2683,7 @@ ModelImporter:
       name: Walk01
       takeName: Take 001
       firstFrame: 1143
-      lastFrame: 1175
+      lastFrame: 1174
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -2849,7 +2849,7 @@ ModelImporter:
       name: Walk02
       takeName: Take 001
       firstFrame: 1175
-      lastFrame: 1204
+      lastFrame: 1203
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
