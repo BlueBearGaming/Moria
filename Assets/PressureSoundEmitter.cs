@@ -7,34 +7,10 @@ using UnityEditor;
 
 public class PressureSoundEmitter: MonoBehaviour {
 
-	public AudioSource audioSource;
-	public AudioClip audioClip;
-	public float soundRadius = 10;
+	public SoundEmitter soundEmitter;
 
-	// Use this for initialization
-	void Start () {
-		audioSource = GetComponent<AudioSource>();
-	}
-
-	// Update is called once per frame
-	void Update () {
-
-	}
-
-	void OnCollisionEnter(Collision collision) {
-		foreach (ContactPoint contact in collision.contacts) {
-			Debug.DrawRay(contact.point, contact.normal, Color.white);
-		}
-		if (collision.relativeVelocity.magnitude > 2) {
-			GetComponent<AudioSource> ().PlayOneShot(this.audioClip);
-		}
-	}
-
-	#if UNITY_EDITOR
-	private void OnDrawGizmos()
+	public void OnCollisionEnter(Collision collision) 
 	{
-		Gizmos.color = Color.white;
-		Gizmos.DrawWireSphere(this.transform.position, this.soundRadius);
+		this.soundEmitter.activate();
 	}
-	#endif
 }
