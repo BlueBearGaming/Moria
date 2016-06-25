@@ -23,7 +23,6 @@ public class EnemySightBehavior : MonoBehaviour {
 			// update last sight position
 			LastPlayerSighting lastSighting = player.GetComponent<LastPlayerSighting> ();
 			lastSighting.position = player.transform.position;
-			Debug.Log ("Player in sight");
 		}
 	}
 
