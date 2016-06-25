@@ -3,7 +3,6 @@ using System.Collections;
 
 public class GotoTarget : MonoBehaviour {
 
-	public Transform target;
 	private NavMeshAgent agent;
 	private EnemyHearing enemyHearing;
 	private EnemySightBehavior enemySightBehavior;
