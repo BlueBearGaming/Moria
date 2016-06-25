@@ -5,50 +5,50 @@ using System.Collections;
 using UnityEditor;
 #endif
 
+[RequireComponent(typeof(AudioSource))] 
 public class SoundEmitter: MonoBehaviour 
 {
 	public AudioClip audioClip;
+	public float intensity = 5;
+	public bool oneShot = true;
 
-	public bool active = false;
-	public float intensity = 20;
-
+	private float activatedAt;
 	private AudioSource audioSource;
-	private GameObject sphere;
 
 	// Use this for initialization
-	public void Start() 
+	public void Start()
 	{
-		audioSource = GetComponent<AudioSource>();
-		sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+		this.audioSource = GetComponent<AudioSource>();
+		this.audioSource.clip = this.audioClip;
 	}
 
 	// Update is called once per frame
-	public void Update() 
+	public void Update()
 	{
-		if (this.isActive()) {
-			if (this.sphere.transform.localScale.x < this.intensity) {
-				this.sphere.transform.localScale += new Vector3 (1, 1, 1);
-			} else {
-				this.deActivate();
-			}
+		if (!this.isPlaying ()) {
+			this.deActivate();
 		}
 	}
 
 	public void activate() 
 	{
-		this.active = true;
-		this.audioSource.PlayOneShot(this.audioClip);
+		if (!this.isPlaying()) {
+			if (this.oneShot) {
+				this.audioSource.PlayOneShot(this.audioClip);
+			} else {
+				this.audioSource.Play();
+			}
+		}
 	}
 
 	public void deActivate()
 	{
-		this.active = false;
-		this.sphere.transform.localScale = new Vector3 (0, 0, 0);
+		this.audioSource.Stop();
 	}
-
-	public bool isActive()
+		
+	public bool isPlaying()
 	{
-		return this.active;
+		return this.audioSource.isPlaying;
 	}
 
 	public bool isInHearingRangeOf(EnemyHearing ennemyHearing)

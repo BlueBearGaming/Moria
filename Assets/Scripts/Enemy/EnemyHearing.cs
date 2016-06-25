@@ -28,7 +28,7 @@ public class EnemyHearing : MonoBehaviour
 	void Update()
 	{
 		foreach (SoundEmitter soundEmitter in this.soundEmitters) {
-			if (soundEmitter.isActive() && soundEmitter.isInHearingRangeOf(this)) {
+			if (soundEmitter.isPlaying() && soundEmitter.isInHearingRangeOf(this)) {
 				this.lastHeard = soundEmitter.transform.position;
 				this.heard = true;
 				Debug.Log("I heard you little chicky");

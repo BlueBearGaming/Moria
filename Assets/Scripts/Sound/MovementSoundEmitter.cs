@@ -4,8 +4,7 @@ using System.Collections;
 [RequireComponent(typeof(SoundEmitter))] 
 public class MovementSoundEmitter : MonoBehaviour 
 {
-	public Vector3 previousPosition;
-
+	private Vector3 previousPosition;
 	private SoundEmitter soundEmitter;
 
 	// Use this for initialization
@@ -19,6 +18,8 @@ public class MovementSoundEmitter : MonoBehaviour
 	void Update() {
 		if (this.previousPosition != this.transform.position) {
 			this.soundEmitter.activate();
+		} else {
+			//this.soundEmitter.deActivate();
 		}
 
 		this.previousPosition = this.transform.position;
