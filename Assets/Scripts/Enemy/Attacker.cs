@@ -5,9 +5,11 @@ public class Attacker : MonoBehaviour {
 
 	public float attackDistance = 1;
 	public bool attacking;
+	public float attackDuration = 1;
 
 	private GameObject player;
 	private EnemySightBehavior enemySight;
+	private float attackStartedDate;
 
 	// Use this for initialization
 	void Start () {
@@ -20,10 +22,17 @@ public class Attacker : MonoBehaviour {
 	{
 		if (enemySight.IsPlayerVisible () && isPlayerAttackable ()) {
 			attacking = true;
+			attackStartedDate = Time.time;
 
 			// TODO launch attack animation
 		} else {
 			attacking = false;
+		}
+
+		if ((Time.time - attackStartedDate) > attackDuration) {
+			attacking = false;
+
+			// TODO stop attack animation
 		}
 	}
 

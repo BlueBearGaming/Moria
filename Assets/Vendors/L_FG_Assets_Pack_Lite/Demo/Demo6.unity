@@ -42523,7 +42523,8 @@ Prefab:
       propertyPath: m_Name
       value: SkeletonEnemy
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11479936, guid: 6334f0d55eea94fd0b88b84821fc9dfe, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6334f0d55eea94fd0b88b84821fc9dfe, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1913764192
