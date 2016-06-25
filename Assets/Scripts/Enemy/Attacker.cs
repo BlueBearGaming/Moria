@@ -16,14 +16,15 @@ public class Attacker : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-
-		if (enemySight.IsPlayerVisible () && isPlayerAttackable()) {
+	void Update () 
+	{
+		if (enemySight.IsPlayerVisible () && isPlayerAttackable ()) {
 			attacking = true;
 
 			// TODO launch attack animation
+		} else {
+			attacking = false;
 		}
-
 	}
 
 	public bool isPlayerAttackable()
