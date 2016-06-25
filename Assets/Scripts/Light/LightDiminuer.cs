@@ -8,6 +8,8 @@ public class LightDiminuer : MonoBehaviour {
 
 	public float ambientIntensity = 3;
 
+	public float torchNoiseRange = 1;
+
 	private GameObject player;
 	private Light playerLight;
 	private Light ambientPlayerLight;
@@ -29,13 +31,6 @@ public class LightDiminuer : MonoBehaviour {
 		if (playerLight.intensity == 0) {
 			ambientPlayerLight.intensity = ambientIntensity;
 		} else {
-			Vector3 playerPosition = player.transform.position;
-
-			float noiseX = playerPosition.x + Mathf.PerlinNoise (0, 2);
-			float noiseY = playerPosition.y + Mathf.PerlinNoise (0, 2);
-			float noiseZ = playerPosition.z + Mathf.PerlinNoise (0, 2);
-
-			playerLight.transform.position = new Vector3(noiseX, noiseY, noiseZ);
 			playerLight.intensity = playerLight.intensity - intensityRate;
 		}
 	}
