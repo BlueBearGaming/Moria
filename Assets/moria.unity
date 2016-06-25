@@ -140,41 +140,9 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: -0.11041513
       objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalPosition.x
+    - target: {fileID: 118452, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
+      propertyPath: m_IsActive
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 466668, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 429230, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 429230, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 429230, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
@@ -221,6 +189,10 @@ Prefab:
     - target: {fileID: 171098, guid: cc0ea044bbc0b4ba48aef8be16a01f18, type: 2}
       propertyPath: m_Name
       value: MainScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 107162, guid: cc0ea044bbc0b4ba48aef8be16a01f18, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cc0ea044bbc0b4ba48aef8be16a01f18, type: 2}
