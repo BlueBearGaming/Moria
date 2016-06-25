@@ -29,6 +29,7 @@ public class LightDiminuer : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (playerLight.intensity == 0) {
+			lightOn = false;
 			ambientPlayerLight.intensity = ambientIntensity;
 		} else {
 			playerLight.intensity -= intensityRate;
@@ -41,5 +42,10 @@ public class LightDiminuer : MonoBehaviour {
 			lightOn = true;
 			playerLight.intensity = intensity;
 		}
+	}
+
+	public bool isLightOn() 
+	{
+		return lightOn;
 	}
 }

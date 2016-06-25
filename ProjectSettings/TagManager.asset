@@ -9,6 +9,7 @@ TagManager:
   - PlayerLight
   - AmbientPlayerLight
   - Enemy
+  - MainLight
   layers:
   - Default
   - TransparentFX

@@ -1211,7 +1211,7 @@ GameObject:
   - 114: {fileID: 11422742}
   m_Layer: 0
   m_Name: RootGameplay
-  m_TagString: Untagged
+  m_TagString: MainLight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2890,9 +2890,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fabccd531dd0478c87b9bf4c0d297aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip: {fileID: 8300000, guid: 42e65e088b3f4374e851b8dbd38f3df9, type: 3}
-  intensity: 0.5
-  oneShot: 0
 --- !u!114 &11413752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2939,9 +2936,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fab7d85f12bb54f56bfcec1dea589738, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  intensity: 15
   intensityRate: 0.001
   ambientIntensity: 3
   torchNoiseRange: 1
+  lightOn: 0
 --- !u!114 &11436050
 MonoBehaviour:
   m_ObjectHideFlags: 1
