@@ -2152,9 +2152,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDistance: 2
   attacking: 0
-  attackDuration: 0.9
   state: 0
-  attackStartedTime: 0
+  attackDuration: 0.9
+  playerLastSightTime: 0
+  alertRemainTime: 10
 --- !u!114 &11407504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2168,8 +2169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fieldOfViewAngle: 110
   minimumVisionRange: 3
-  lightVisionDistance: 5
-  darkVisionDistance: 3
+  lightVisionDistance: 12
+  darkVisionDistance: 5
 --- !u!114 &11417578
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2209,6 +2210,8 @@ MonoBehaviour:
   lightReduce: 1
   turnRate: 10
   maximumLightIntensity: 4
+  walkSpeed: 1
+  runSpeed: 3
 --- !u!136 &13614910
 CapsuleCollider:
   m_ObjectHideFlags: 1
