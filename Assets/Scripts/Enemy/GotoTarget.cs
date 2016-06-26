@@ -4,10 +4,8 @@ using System.Collections;
 public class GotoTarget : MonoBehaviour {
 
 	public float lightReduce = 1F;
-	public float turnRate = 10;
 	public float maximumLightIntensity = 4;
-	public float walkSpeed = 1;
-	public float runSpeed = 3;
+	public float walkSpeedModifier = 0.2f;
 
 	private NavMeshAgent agent;
 	private EnemyHearing enemyHearing;
@@ -16,6 +14,7 @@ public class GotoTarget : MonoBehaviour {
 	private Attacker attacker;
 	private LightManager lightManager;
 	private Light playerLight;
+    private float initialRunSpeed;
 
 	// Use this for initialization
 	void Awake () {
@@ -29,6 +28,11 @@ public class GotoTarget : MonoBehaviour {
 		playerLight = playerLightObject.GetComponent<Light> ();
 		lightManager = playerLightObject.GetComponent<LightManager> ();
 	}
+
+    void Start()
+    {
+        initialRunSpeed = agent.speed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -52,7 +56,7 @@ public class GotoTarget : MonoBehaviour {
 	void Move()
 	{
 		Vector3 position;
-		float speed;
+		float speed = initialRunSpeed;
 
 		if (lightManager.lightOn && lightManager.GetIntensity() > maximumLightIntensity) {
 			RotateToPlayer ();
@@ -65,11 +69,9 @@ public class GotoTarget : MonoBehaviour {
 			position = player.transform.position;
 		}
 
-		// if a skeleton is alerted, it will run
-		if (attacker.state == Attacker.State.Alerted) {
-			speed = runSpeed;	
-		} else {
-			speed = walkSpeed;
+		// if a skeleton is not alerted, it will only walk
+		if (attacker.state != Attacker.State.Alerted) {
+			speed *= walkSpeedModifier;
 		}
 		agent.speed = speed;
 		agent.SetDestination (position);
