@@ -10,13 +10,13 @@ public class LightDiminuer : MonoBehaviour {
 	public float torchNoiseRange = 1;
 	public bool lightOn = false;
 
-	private GameObject player;
 	private Light playerLight;
 	private Light ambientPlayerLight;
 
 	// Use this for initialization
 	void Awake () {
-		player = GameObject.FindGameObjectWithTag ("Player");
+		// Disable debug light
+		GameObject.FindGameObjectWithTag ("DebugLight").SetActive(false);
 
 		playerLight = GameObject.FindGameObjectWithTag ("PlayerLight").GetComponent<Light>();
 		playerLight.intensity = 0;
@@ -41,6 +41,8 @@ public class LightDiminuer : MonoBehaviour {
 		if (Input.GetKey (KeyCode.L) && !lightOn) {
 			lightOn = true;
 			playerLight.intensity = intensity;
+			GameObject.Find ("HelperText").SetActive(false);
+			GameObject.Find ("MainTitle").SetActive(false);
 		}
 	}
 
