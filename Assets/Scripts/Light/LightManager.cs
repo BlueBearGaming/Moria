@@ -13,14 +13,16 @@ public class LightManager : MonoBehaviour {
 	private ParticleSystem torchFire;
 
 	// Use this for initialization
-	void Awake () {
+	void Awake () 
+	{
 		light = GetComponent<Light>();
 		initialIntensity = light.intensity;
 		ambientLight = GameObject.FindGameObjectWithTag ("AmbientPlayerLight").GetComponent<Light>(); // @todo find Lights in children
 		torchFire = GetComponentInChildren<ParticleSystem> ();
 	}
 
-	void Start(){
+	void Start()
+	{
 		if (lightOn) {
 			lightsOn ();
 		} else {
@@ -29,7 +31,8 @@ public class LightManager : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if (light.intensity <= 0) {
 			lightsOut ();
 		} else {
@@ -48,22 +51,26 @@ public class LightManager : MonoBehaviour {
 		}
 	}
 
-	public float GetIntensity() {
+	public float GetIntensity() 
+	{
 		return light.intensity;
 	}
 
 	void lightsOut() {
 		light.intensity = 0;
 		ambientLight.intensity = ambientIntensity;
+
 		if (torchFire) {
 			torchFire.Stop ();
 		}
 		lightOn = false;
 	}
 
-	void lightsOn() {
+	void lightsOn() 
+	{
 		light.intensity = initialIntensity;
 		ambientLight.intensity = 0;
+
 		if (torchFire) {
 			torchFire.Play ();
 		}

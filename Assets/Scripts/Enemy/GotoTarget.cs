@@ -6,6 +6,8 @@ public class GotoTarget : MonoBehaviour {
 	public float lightReduce = 1F;
 	public float turnRate = 10;
 	public float maximumLightIntensity = 4;
+	public float walkSpeed = 1;
+	public float runSpeed = 3;
 
 	private NavMeshAgent agent;
 	private EnemyHearing enemyHearing;
@@ -50,6 +52,7 @@ public class GotoTarget : MonoBehaviour {
 	void Move()
 	{
 		Vector3 position;
+		float speed;
 
 		if (lightManager.lightOn && lightManager.GetIntensity() > maximumLightIntensity) {
 			RotateToPlayer ();
@@ -61,9 +64,15 @@ public class GotoTarget : MonoBehaviour {
 		} else {
 			position = player.transform.position;
 		}
+
+		// if a skeleton is alerted, it will run
+		if (attacker.state == Attacker.State.Alerted) {
+			speed = runSpeed;	
+		} else {
+			speed = walkSpeed;
+		}
+		agent.speed = speed;
 		agent.SetDestination (position);
-
-
 	}
 
 	void RotateToPlayer()
@@ -71,7 +80,6 @@ public class GotoTarget : MonoBehaviour {
 		Vector3 targetDir = player.transform.position - transform.position;
 		float step = agent.angularSpeed * Time.deltaTime;
 		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
-		Debug.DrawRay(transform.position, newDir, Color.red);
 		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
