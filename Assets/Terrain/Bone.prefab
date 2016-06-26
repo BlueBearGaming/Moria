@@ -27,10 +27,10 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 171588}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.43280792, y: 0.026615083, z: 3.0203705}
-  m_LocalScale: {x: 1.9870365, y: 1.9870365, z: 1.9870365}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0.0026179913, z: 0, w: 0.9999966}
+  m_LocalPosition: {x: 1.7423083, y: 0.026615143, z: -3.6190262}
+  m_LocalScale: {x: 7, y: 7, z: 10.35}
+  m_LocalEulerAnglesHint: {x: 0, y: -0.29999998, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -164,7 +164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 246b191523a35477a8654149efac62ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collider: {fileID: 0}
   soundEmitter: {fileID: 0}
 --- !u!114 &11414470
 MonoBehaviour:

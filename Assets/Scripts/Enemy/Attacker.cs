@@ -6,12 +6,14 @@ public class Attacker : MonoBehaviour {
 	public float attackDistance = 1;
 	public bool attacking;
 	public State state = State.Asleep;
+	public float attackDuration = .7f;
+	public float playerLastSightTime;
+	public float alertRemainTime = 10;
 	public enum State
 	{
 		Asleep,
 		Alerted
 	};
-	public float attackDuration = .7f;
 
 	private GameObject player;
 	private PlayerHealth playerHealth;
@@ -23,11 +25,14 @@ public class Attacker : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerHealth = player.GetComponent<PlayerHealth>();
 		enemySight = GetComponent<EnemySightBehavior> ();
+		playerLastSightTime = 0;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		UpdateState ();
+
 		if (enemySight.IsPlayerVisible () && isPlayerAttackable ()) {
 			if (attacking == false) {
 				attackStartedTime = Time.time;
@@ -60,5 +65,18 @@ public class Attacker : MonoBehaviour {
 	public bool isAttacking()
 	{
 		return attacking != false;
+	}
+
+	void UpdateState ()
+	{
+		if (enemySight.IsPlayerVisible ()) {
+			// if a skeleton sees the player, it is alerted
+			state = State.Alerted;
+			playerLastSightTime = Time.time;
+		} else if (state != State.Alerted || (Time.time - playerLastSightTime) > alertRemainTime) {
+			// if the skeleton was alerted, it remains alerted for alertRemainTime
+			state = State.Asleep;
+			playerLastSightTime = 0;
+		}
 	}
 }
