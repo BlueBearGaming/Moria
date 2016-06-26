@@ -6,6 +6,13 @@ public class Attacker : MonoBehaviour {
 	public float attackDistance = 1;
 	public bool attacking;
 	public float attackDuration = .9f;
+	public State state = State.Asleep;
+
+	public enum State
+	{
+		Asleep,
+		Alerted
+	};
 
 	private GameObject player;
 	private EnemySightBehavior enemySight;

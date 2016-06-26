@@ -71,7 +71,6 @@ public class GotoTarget : MonoBehaviour {
 		Vector3 targetDir = player.transform.position - transform.position;
 		float step = agent.angularSpeed * Time.deltaTime;
 		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
-		Debug.DrawRay(transform.position, newDir, Color.red);
 		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
