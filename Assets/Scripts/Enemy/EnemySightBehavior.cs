@@ -19,7 +19,6 @@ public class EnemySightBehavior : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-
 		if (IsPlayerVisible ()) {
 			// update last sight position
 			LastPlayerSighting lastSighting = player.GetComponent<LastPlayerSighting> ();
@@ -36,8 +35,6 @@ public class EnemySightBehavior : MonoBehaviour {
 		Vector3 direction = playerPosition - skeletonPosition;
 		float angle = Vector3.Angle(direction, transform.forward);	
 		float distance = Vector3.Distance (playerPosition, skeletonPosition);
-
-		testDistance = distance;
 
 		// if the player is in view angle and in distance vision range
 		if((minimumVisionRange >= distance) || (distance <= visionDistance && angle < fieldOfViewAngle * 0.5f)) {

@@ -27,7 +27,6 @@ public class GotoTarget : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		RotateToPlayer ();
 
 		if (attacker.isAttacking()) {
 			return;
@@ -50,11 +49,12 @@ public class GotoTarget : MonoBehaviour {
 		Vector3 position;
 
 		if (lightDiminuer.isLightOn ()) {
+			RotateToPlayer ();
+
 			float distanceFromPlayer = Vector3.Distance (transform.position, player.transform.position);
 			float distance = distanceFromPlayer - (playerLight.intensity / lightReduce);
 		
 			position = Vector3.MoveTowards (transform.position, player.transform.position, distance);
-
 		} else {
 			position = player.transform.position;
 		}
@@ -65,7 +65,10 @@ public class GotoTarget : MonoBehaviour {
 
 	void RotateToPlayer()
 	{
-		transform.eulerAngles = Vector3.RotateTowards (transform.position, player.transform.position,  Time.deltaTime, 0.0F);
-		//transform.eulerAngles = new Vector3 (position.x, position.y, position.z);
+		Vector3 targetDir = player.transform.position - transform.position;
+		float step = agent.angularSpeed * Time.deltaTime;
+		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+		Debug.DrawRay(transform.position, newDir, Color.red);
+		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
