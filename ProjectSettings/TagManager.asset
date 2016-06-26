@@ -11,6 +11,7 @@ TagManager:
   - Enemy
   - MainLight
   - DebugLight
+  - Canvas
   layers:
   - Default
   - TransparentFX
