@@ -15,7 +15,7 @@ public class SoundEmitter: MonoBehaviour
 	private AudioSource audioSource;
 
 	// Use this for initialization
-	public void Start()
+	public void Awake()
 	{
 		this.audioSource = GetComponent<AudioSource>();
 		this.audioClip = this.audioSource.clip;

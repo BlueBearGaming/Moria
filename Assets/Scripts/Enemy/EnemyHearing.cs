@@ -20,11 +20,6 @@ public class EnemyHearing : MonoBehaviour
 		this.soundEmitters = FindObjectsOfType(typeof(SoundEmitter)) as SoundEmitter[];
 	}
 
-	void Awake()
-	{
-
-	}
-
 	void Update()
 	{
 		foreach (SoundEmitter soundEmitter in this.soundEmitters) {

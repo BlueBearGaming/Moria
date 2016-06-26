@@ -7,7 +7,7 @@ public class CollisionSoundEmitter: MonoBehaviour
 	public BoxCollider collider;
 	public SoundEmitter soundEmitter;
 
-	void Start()
+	void Awake()
 	{
 		this.collider = GetComponent<BoxCollider>();
 		this.soundEmitter = GetComponent<SoundEmitter>();

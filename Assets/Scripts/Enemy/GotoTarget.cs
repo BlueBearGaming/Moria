@@ -5,24 +5,27 @@ public class GotoTarget : MonoBehaviour {
 
 	public float lightReduce = 1F;
 	public float turnRate = 10;
+	public float maximumLightIntensity = 4;
 
 	private NavMeshAgent agent;
 	private EnemyHearing enemyHearing;
 	private EnemySightBehavior enemySightBehavior;
 	private GameObject player;
 	private Attacker attacker;
-	private LightDiminuer lightDiminuer;
+	private LightManager lightManager;
 	private Light playerLight;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		agent = GetComponent<NavMeshAgent> ();
 		enemyHearing = GetComponent<EnemyHearing> ();
 		enemySightBehavior = GetComponent<EnemySightBehavior> ();
 		attacker = GetComponent<Attacker> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		lightDiminuer = GameObject.FindGameObjectWithTag ("MainLight").GetComponent<LightDiminuer>();
-		playerLight = GameObject.FindGameObjectWithTag ("PlayerLight").GetComponent<Light> ();
+
+		GameObject playerLightObject = GameObject.FindGameObjectWithTag ("PlayerLight");
+		playerLight = playerLightObject.GetComponent<Light> ();
+		lightManager = playerLightObject.GetComponent<LightManager> ();
 	}
 	
 	// Update is called once per frame
@@ -48,7 +51,7 @@ public class GotoTarget : MonoBehaviour {
 	{
 		Vector3 position;
 
-		if (lightDiminuer.isLightOn ()) {
+		if (lightManager.lightOn && lightManager.GetIntensity() > maximumLightIntensity) {
 			RotateToPlayer ();
 
 			float distanceFromPlayer = Vector3.Distance (transform.position, player.transform.position);

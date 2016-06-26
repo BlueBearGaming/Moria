@@ -7,7 +7,7 @@ public class PressureSoundEmitter: MonoBehaviour
 	public SoundEmitter soundEmitter;
 
 	// Use this for initialization
-	void Start()
+	void Awake()
 	{
 		this.soundEmitter = GetComponent<SoundEmitter>();
 	}

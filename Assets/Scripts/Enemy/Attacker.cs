@@ -12,7 +12,7 @@ public class Attacker : MonoBehaviour {
 	public float attackStartedTime;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		enemySight = GetComponent<EnemySightBehavior> ();
 	}
