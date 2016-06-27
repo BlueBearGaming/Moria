@@ -20192,10 +20192,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11441916, guid: 6334f0d55eea94fd0b88b84821fc9dfe, type: 2}
-      propertyPath: hearingRadius
-      value: 15
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6334f0d55eea94fd0b88b84821fc9dfe, type: 2}
   m_IsPrefabParent: 0
@@ -54765,6 +54761,10 @@ Prefab:
       propertyPath: lifeBar
       value: 
       objectReference: {fileID: 164904169}
+    - target: {fileID: 158244, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d23f847caabf064289aed5bd9de2519, type: 2}
   m_IsPrefabParent: 0

@@ -7,11 +7,17 @@ public class StartGame : MonoBehaviour {
 	private GameObject gameOver;
 
 	// Use this for initialization
-	void Start () {
-		// Disable debug light
-		GameObject.FindGameObjectWithTag ("DebugLight").SetActive(false);
-		gameOver = GameObject.Find ("GameOver");
-		gameOver.SetActive (false);
+	void Start ()
+    {
+        gameOver = GameObject.Find("GameOver");
+        gameOver.SetActive(false);
+
+        // Disable debug light
+        GameObject debugLight = GameObject.FindGameObjectWithTag("DebugLight");
+        if (debugLight)
+        {
+            debugLight.SetActive(false);
+        }
 	}
 	
 	// Update is called once per frame
