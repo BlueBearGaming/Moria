@@ -10,17 +10,18 @@ public class PlayerHealth : MonoBehaviour
 	public Text lifeBar;
 	private GameObject gameOver;
 	private bool dead = false;
-
-	private Animator anim;                              // Reference to the animator component.
+    private GameObject player;
+    private Animator anim;                              // Reference to the animator component.
 	private LastPlayerSighting lastPlayerSighting;      // Reference to the LastPlayerSighting script.
 	private float timer;                                // A timer for counting to the reset of the level once the player is dead.
 	private bool playerDead;                            // A bool to show if the player is dead or not.
 
 	void Awake ()
 	{
-		// Setting up the references.
-		anim = transform.parent.gameObject.GetComponent<Animator>();
-		lastPlayerSighting = GameObject.FindGameObjectWithTag("Player").GetComponent<LastPlayerSighting>();
+        // Setting up the references.
+        player = GameObject.FindGameObjectWithTag("Player");
+        anim = transform.parent.gameObject.GetComponent<Animator>();
+		lastPlayerSighting = player.GetComponent<LastPlayerSighting>();
 		gameOver = GameObject.Find ("GameOver");
 	}
 		
@@ -55,7 +56,11 @@ public class PlayerHealth : MonoBehaviour
 		health = 0;
 		gameOver.SetActive (true);
 		anim.SetTrigger ("Dead");
-	}
+        player.transform.parent.gameObject.SetActive(false);
+        Text test = GameObject.Find("GameOverTimeInfo").GetComponent<Text>();
+       
+        test.text = test.text.Replace("{{time}}", Mathf.Round(Time.time).ToString());
+    }
 
 	public bool isDead()
 	{

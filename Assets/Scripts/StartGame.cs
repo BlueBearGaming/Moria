@@ -4,13 +4,12 @@ using System.Collections;
 public class StartGame : MonoBehaviour {
 	
 	private bool started = false;
-	private GameObject gameOver;
 
 	// Use this for initialization
 	void Start ()
     {
-        gameOver = GameObject.Find("GameOver");
-        gameOver.SetActive(false);
+        GameObject.Find("GameOver").SetActive(false);
+        GameObject.Find("GameSuccess").SetActive(false);
 
         // Disable debug light
         GameObject debugLight = GameObject.FindGameObjectWithTag("DebugLight");
