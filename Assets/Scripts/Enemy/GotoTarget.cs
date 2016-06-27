@@ -42,31 +42,35 @@ public class GotoTarget : MonoBehaviour {
 		}
 
 		if (enemySightBehavior.IsPlayerVisible()) {
-			Move ();
+			Move (player.transform.position);
 			return;
 		}
 		// Cas si player vu récemment, va en direction de la dernière position connue du joueur
+        if (attacker.alertRemainTime > 0)
+        {
+            RotateToward(player.transform.position);
+        }
 
 		if (enemyHearing.heard) {
 			enemyHearing.heard = false;
-			Move ();
+			Move (player.transform.position); // @todo move to source position
 		}
 	}
 
-	void Move()
+	void Move(Vector3 playerPosition)
 	{
 		Vector3 position;
 		float speed = initialRunSpeed;
 
 		if (lightManager.lightOn && lightManager.GetIntensity() > maximumLightIntensity) {
-			RotateToPlayer ();
+			RotateToward (playerPosition);
 
-			float distanceFromPlayer = Vector3.Distance (transform.position, player.transform.position);
+			float distanceFromPlayer = Vector3.Distance (transform.position, playerPosition);
 			float distance = distanceFromPlayer - (playerLight.intensity / lightReduce);
 		
-			position = Vector3.MoveTowards (transform.position, player.transform.position, distance);
+			position = Vector3.MoveTowards (transform.position, playerPosition, distance + Random.Range(0, 2));
 		} else {
-			position = player.transform.position;
+			position = playerPosition;
 		}
 
 		// if a skeleton is not alerted, it will only walk
@@ -77,11 +81,10 @@ public class GotoTarget : MonoBehaviour {
 		agent.SetDestination (position);
 	}
 
-	void RotateToPlayer()
+	void RotateToward(Vector3 playerPosition)
 	{
-		Vector3 targetDir = player.transform.position - transform.position;
 		float step = agent.angularSpeed * Time.deltaTime;
-		Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, step, 0.0F);
+		Vector3 newDir = Vector3.RotateTowards(transform.forward, playerPosition - transform.position, step, 0.0F);
 		transform.rotation = Quaternion.LookRotation(newDir);
 	}
 }
